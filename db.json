@@ -1,13 +1,13 @@
 {
   "toys": [
     {
-      "likes": 7,
+      "likes": 12,
       "id": 1
     },
     {
       "name": "Buzz Lightyear",
       "image": "http://www.pngmart.com/files/6/Buzz-Lightyear-PNG-Transparent-Picture.png",
-      "likes": 11,
+      "likes": 13,
       "id": 2
     },
     {

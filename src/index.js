@@ -48,35 +48,38 @@ function renderToyCards(arr) {
     let div = document.createElement("div");
     div.setAttribute("class", "card");
     document.getElementById("toy-collection").appendChild(div);
+    renderToy(div, element);
+  });
+}
 
-    let h2 = document.createElement("h2");
-    h2.innerText = element.name;
-    div.appendChild(h2);
-    let img = document.createElement("img");
-    img.setAttribute("src", element.image);
-    img.setAttribute("class", "toy-avatar");
-    div.appendChild(img);
-    let p = document.createElement("p");
-    p.innerText = element.likes;
-    div.appendChild(p);
-    let btn = document.createElement("button");
-    btn.innerText = "Like ❤";
-    btn.setAttribute("class", "like-btn");
-    div.appendChild(btn);
+function renderToy(div, element) {
+  let h2 = document.createElement("h2");
+  h2.innerText = element.name;
+  div.appendChild(h2);
+  let img = document.createElement("img");
+  img.setAttribute("src", element.image);
+  img.setAttribute("class", "toy-avatar");
+  div.appendChild(img);
+  let p = document.createElement("p");
+  p.innerText = element.likes;
+  div.appendChild(p);
+  let btn = document.createElement("button");
+  btn.innerText = "Like ❤";
+  btn.setAttribute("class", "like-btn");
+  div.appendChild(btn);
 
-    btn.addEventListener("click", function() {
-      return fetch(API_URL + `/${element.id}`, {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json"
-        },
-        body: JSON.stringify({
-          name: element.name,
-          image: element.image,
-          likes: element.likes + 1
-        })
-      }).then(response => response.json);
-    });
+  btn.addEventListener("click", function(e) {
+    fetch(API_URL + `/${element.id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json"
+      },
+      body: JSON.stringify({
+        name: element.name,
+        image: element.image,
+        likes: element.likes + 1
+      })
+    }).then(response => response.json);
   });
 }
